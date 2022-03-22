@@ -211,3 +211,6 @@ export class DerivAPIWrapper
 		return await this.#call<Types.PortfolioRequest, Types.PortfolioResponse>('portfolio', params);
 	}
 }
+
+export { Exception };
+export type { Types };

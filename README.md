@@ -4,8 +4,14 @@ A typescript wrapper around [Deriv API](https://github.com/binary-com/deriv-api)
 
 # Installation
 
+## Yarn
 ```shell
 yarn add deriv-api-ts
+```
+
+## NPM
+```shell
+npm install deriv-api-ts
 ```
 
 # Usage
@@ -13,10 +19,10 @@ yarn add deriv-api-ts
 ## Endpoints without authentication
 
 ```typescript
-import DerivAPI from 'deriv-api-ts';
+import { DerivAPIWrapper } from 'deriv-api-ts';
 
 const appId = 1234;
-const api = new DerivAPI(appId);
+const api = new DerivAPIWrapper(appId);
 const websiteStatus = await api.websiteStatus();
 
 console.log(websiteStatus);
@@ -33,10 +39,10 @@ authenticate with the token that is passed either to the constructor or to the l
 token is found, an error will be thrown.
 
 ```typescript
-import DerivAPI from 'deriv-api-ts';
+import { DerivAPIWrapper } from 'deriv-api-ts';
 
 const appId = 1234;
-const api = new DerivAPI(appId);
+const api = new DerivAPIWrapper(appId);
 
 const authResult = await api.authorize('YOUR API TOKEN');
 ```
@@ -44,29 +50,33 @@ const authResult = await api.authorize('YOUR API TOKEN');
 OR
 
 ```typescript
-import DerivAPI from 'deriv-api-ts';
+import { DerivAPIWrapper } from 'deriv-api-ts';
 
 const appId = 1234;
-const api = new DerivAPI(1234, 'YOUR API TOKEN');
+const api = new DerivAPIWrapper(appId, 'YOUR API TOKEN');
 ```
 
 ## Types
+`@deriv/api-types` package is used internally to provide support for types.
 
 ```typescript
-import DerivAPI, { Exception } from 'deriv-api-ts';
-import type { ProfitTable } from 'deriv-api-ts';
+import { DerivAPIWrapper, Exception, Types as binaryTypes } from 'deriv-api-ts';
 
 const appId = 1234;
-const api = new DerivAPI(1234, 'YOUR API TOKEN');
+const api = new DerivAPIWrapper(appId, 'YOUR API TOKEN');
+const params: binaryTypes.ProfitTableRequest = {
+    contract_type : [ 'CALL' ],
+    profit_table  : 1,
+};
 
-api.profitTable()
-   .then((profitTableResult: ProfitTable) =>
+api.profitTable(params)
+   .then((profitTableResult: binaryTypes.ProfitTable) =>
    {
-	   // Your code
+       // Your code
    })
    .catch((err: Exception) =>
    {
-	   console.log(`Code: ${ errObj.code } Message: ${ errObj.message }`);
+       console.log(`Code: ${ errObj.code } Message: ${ errObj.message }`);
    })
    // Closing the websocket connection gracefully.
    .finally(() => api.disconnect());
@@ -75,44 +85,52 @@ api.profitTable()
 ## Error Handling
 
 ```typescript
-import DerivAPI, { Exception } from 'deriv-api-ts';
+import { DerivAPIWrapper, Exception, Types } from 'deriv-api-ts';
 
 const appId = 1234;
-const api = new DerivAPI(1234, 'YOUR API TOKEN');
+const api = new DerivAPIWrapper(1234, 'YOUR API TOKEN');
+const params: Types.ProfitTableRequest = {
+    contract_type : [],
+    profit_table  : 1,
+};
 
-api.profitTable()
+api.profitTable(params)
    .then((profitTableResult) =>
    {
-	   // Your code
+       // Your code
    })
    .catch((err: Exception) =>
    {
-	   console.log(`Code: ${ errObj.code } Message: ${ errObj.message }`);
+       console.log(`Code: ${ errObj.code } Message: ${ errObj.message }`);
    })
-	// Closing the websocket connection gracefully.
+    // Closing the websocket connection gracefully.
    .finally(() => api.disconnect());
 ```
 
 OR
 
 ```typescript
-import DerivAPI, { Exception } from 'deriv-api-ts';
+import { DerivAPIWrapper, Exception, Types } from 'deriv-api-ts';
 
 const appId = 1234;
-const api = new DerivAPI(1234, 'YOUR API TOKEN');
+const api = new DerivAPIWrapper(1234, 'YOUR API TOKEN');
+const params: Types.ProfitTableRequest = {
+    contract_type : [],
+    profit_table  : 1,
+};
 
 try
 {
-	const profitTableResult = await api.profitTable();
+    const profitTableResult = await api.profitTable(params);
 }
 catch (err)
 {
-	const errObj = err as Exception;
-	console.log(`Code: ${ errObj.code } Message: ${ errObj.message }`);
+    const errObj = err as Exception;
+    console.log(`Code: ${ errObj.code } Message: ${ errObj.message }`);
 }
 finally
 {
-	// Closing the websocket connection gracefully.
-	api.disconnect();
+    // Closing the websocket connection gracefully.
+    api.disconnect();
 }
 ```
