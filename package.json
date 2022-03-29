@@ -1,6 +1,6 @@
 {
   "name": "deriv-api-ts",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A typescript wrapper around Deriv API",
   "main": "dist/DerivAPI.js",
   "repository": {

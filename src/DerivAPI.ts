@@ -210,6 +210,16 @@ export class DerivAPIWrapper
 	{
 		return await this.#call<Types.PortfolioRequest, Types.PortfolioResponse>('portfolio', params);
 	}
+	
+	/**
+	 * Buy a Contract for multiple Accounts specified by the `tokens` parameter.
+	 * @param {Types.BuyContractForMultipleAccountsRequest} params
+	 * @return {Promise<Types.BuyContractForMultipleAccounts>}
+	 */
+	public async buyContractForMultipleAccounts(params: Types.BuyContractForMultipleAccountsRequest)
+	{
+		return await this.#call<Types.BuyContractForMultipleAccountsRequest, Types.BuyContractForMultipleAccountsResponse>('buyContractForMultipleAccounts', params);
+	}
 }
 
 export { Exception };
