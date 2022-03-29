@@ -25,6 +25,7 @@
     "lint": "yarn run eslinter; yarn run type-check",
     "build": "tsc --build ./tsconfig.json",
     "test": "jest --passWithNoTests",
+    "prepack": "yarn build",
     "postinstall": "yarn build"
   },
   "packageManager": "yarn@3.1.1",
