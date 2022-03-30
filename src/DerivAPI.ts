@@ -134,7 +134,7 @@ export class DerivAPIWrapper
 					{
 						throw new Exception(errResult.error.code, errResult.error.message);
 					}
-					throw new Exception('Unknown', 'Unknown error occured');
+					throw new Exception('Unknown', 'Unknown error occurred');
 				}
 			});
 	}
