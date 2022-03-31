@@ -1,6 +1,6 @@
 {
   "name": "deriv-api-ts",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A typescript wrapper around Deriv API",
   "main": "dist/DerivAPI.js",
   "repository": {
@@ -25,8 +25,7 @@
     "lint": "yarn run eslinter; yarn run type-check",
     "build": "tsc --build ./tsconfig.json",
     "test": "jest --passWithNoTests",
-    "prepack": "yarn build",
-    "postinstall": "yarn build"
+    "prepack": "yarn build"
   },
   "packageManager": "yarn@3.1.1",
   "devDependencies": {
