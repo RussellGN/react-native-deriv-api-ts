@@ -220,6 +220,16 @@ export class DerivAPIWrapper
 	{
 		return await this.#call<Types.BuyContractForMultipleAccountsRequest, Types.BuyContractForMultipleAccountsResponse>('buyContractForMultipleAccounts', params);
 	}
+	
+	/**
+	 * Gets latest price for a specific contract.
+	 * @param {Types.PriceProposalRequest} params
+	 * @return {Promise<Types.Proposal>}
+	 */
+	public async proposal(params: Types.PriceProposalRequest)
+	{
+		return await this.#call<Types.PriceProposalRequest, Types.PriceProposalResponse>('proposal', params);
+	}
 }
 
 export { Exception };
