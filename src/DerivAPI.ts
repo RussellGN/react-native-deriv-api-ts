@@ -78,7 +78,7 @@ export class DerivAPIWrapper
 	readonly #logger = new Logger('DerivAPI');
 	#authorized = false;
 	#token?: string;
-	#noAuthEndpoints = [ 'authorize', 'websiteStatus' ];
+	#noAuthEndpoints = [ 'authorize', 'websiteStatus', 'proposal' ];
 	
 	constructor(appId: number, token?: string)
 	{
