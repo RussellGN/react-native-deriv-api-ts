@@ -54,8 +54,9 @@ export interface BinaryApiResponseType
 	 * Error details
 	 */
 	error?: {
-		code: string,
-		message: string
+		code: string;
+		message: string;
+		details: { [k: string]: unknown };
 	},
 	
 	/**
@@ -132,7 +133,7 @@ export class DerivAPIWrapper
 
 					if (errResult.error)
 					{
-						throw new Exception(errResult.error.code, errResult.error.message);
+						throw new Exception(errResult.error.code, errResult.error.message, errResult.error.details);
 					}
 					throw new Exception('Unknown', 'Unknown error occurred');
 				}

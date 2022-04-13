@@ -76,7 +76,7 @@ api.profitTable(params)
    })
    .catch((err: Exception) =>
    {
-       console.log(`Code: ${ errObj.code } Message: ${ errObj.message }`);
+	   console.log(`Code: ${ errObj.code } Message: ${ errObj.message } Details: ${ JSON.stringify(errObj.getParams()) }`);
    })
    // Closing the websocket connection gracefully.
    .finally(() => api.disconnect());
@@ -101,7 +101,7 @@ api.profitTable(params)
    })
    .catch((err: Exception) =>
    {
-       console.log(`Code: ${ errObj.code } Message: ${ errObj.message }`);
+	   console.log(`Code: ${ errObj.code } Message: ${ errObj.message } Details: ${ JSON.stringify(errObj.getParams()) }`);
    })
     // Closing the websocket connection gracefully.
    .finally(() => api.disconnect());
@@ -126,7 +126,7 @@ try
 catch (err)
 {
     const errObj = err as Exception;
-    console.log(`Code: ${ errObj.code } Message: ${ errObj.message }`);
+    console.log(`Code: ${ errObj.code } Message: ${ errObj.message } Details: ${ JSON.stringify(errObj.getParams()) }`);
 }
 finally
 {
