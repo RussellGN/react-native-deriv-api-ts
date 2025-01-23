@@ -1,14 +1,14 @@
 /* eslint-disable camelcase */
 
-import Exception from "./Exception";
+import Exception from './Exception';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import DerivAPI from "@deriv/deriv-api";
-import type * as Types from "@deriv/api-types";
-import { LogOutRequest } from "@deriv/api-types";
-import Logger from "./Logger";
-import { Observable } from "rxjs";
-import WebSocket from "react-native-websocket";
+import DerivAPI from '@deriv/deriv-api';
+import type * as Types from '@deriv/api-types';
+import { LogOutRequest } from '@deriv/api-types';
+import Logger from './Logger';
+import { Observable } from 'rxjs';
+import WebSocket from 'react-native-websocket';
 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 Object.assign(global, { WebSocket });
@@ -41,6 +41,7 @@ export type BinaryApiType = {
 };
 
 export interface BinaryApiResponseType {
+
    /**
     * Echo of the request made.
     */
@@ -70,133 +71,160 @@ export interface BinaryApiResponseType {
    [k: string]: unknown;
 }
 
-export class DerivAPIWrapper {
-   readonly #appId: number;
-   readonly #api: BinaryApiType;
-   readonly #logger = new Logger("DerivAPI");
-   #authorized = false;
-   #token?: string;
-   #noAuthEndpoints = ["authorize", "websiteStatus", "proposal"];
+export class DerivAPIWrapper 
+{
+	readonly #appId: number;
+	readonly #api: BinaryApiType;
+	readonly #logger = new Logger('DerivAPI');
+	#authorized = false;
+	#token?: string;
+	#noAuthEndpoints = [ 'authorize', 'websiteStatus', 'proposal' ];
 
-   constructor(appId: number, token?: string) {
-      this.#appId = appId;
-      this.#token = token;
+	constructor(appId: number, token?: string) 
+	{
+		this.#appId = appId;
+		this.#token = token;
 
-      this.#api = new (DerivAPI as BinaryApiType)({ app_id: appId, lang: "EN" });
+		this.#api = new (DerivAPI as BinaryApiType)({ app_id: appId, lang: 'EN' });
 
-      this.#api.basic.onOpen().subscribe((x) => this.#logger.debug("onOpen %s", x));
-      this.#api.basic.onClose().subscribe((x) => this.#logger.debug("onClose %s", x));
-      this.#api.basic.onMessage().subscribe((msg) => this.#logger.debug("onMessage [msg=%O]", msg));
-   }
+		this.#api.basic.onOpen().subscribe((x) => this.#logger.debug('onOpen %s', x));
+		this.#api.basic.onClose().subscribe((x) => this.#logger.debug('onClose %s', x));
+		this.#api.basic.onMessage().subscribe((msg) => this.#logger.debug('onMessage [msg=%O]', msg));
+	}
 
-   async #call<Req, Res extends BinaryApiResponseType>(methodName: string, params: Req): Promise<NonNullable<Res[Res["msg_type"]]>> {
-      if (!this.#authorized && !this.#noAuthEndpoints.includes(methodName)) {
-         await this.authorize();
-      }
+	async #call<Req, Res extends BinaryApiResponseType>(methodName: string, params: Req): Promise<NonNullable<Res[Res['msg_type']]>> 
+	{
+		if (!this.#authorized && !this.#noAuthEndpoints.includes(methodName)) 
+		{
+			await this.authorize();
+		}
 
-      return this.#api.basic[methodName]<Req, Res>(params)
-         .then((result) => {
-            if (result[result.msg_type]) {
-               return result[result.msg_type] as NonNullable<Res[Res["msg_type"]]>;
-            } else {
-               const errResult = result as BinaryApiResponseType;
+		return this.#api.basic[methodName]<Req, Res>(params)
+			.then((result) => 
+			{
+				if (result[result.msg_type]) 
+				{
+					return result[result.msg_type] as NonNullable<Res[Res['msg_type']]>;
+				}
+				else 
+				{
+					const errResult = result as BinaryApiResponseType;
 
-               if (errResult.error) {
-                  throw new Exception(errResult.error.code, errResult.error.message);
-               }
-               throw new Exception("Unknown", "Unknown error occurred");
-            }
-         })
-         .catch((err) => {
-            if (err instanceof Exception) {
-               throw err;
-            } else {
-               const errResult = err as BinaryApiResponseType;
+					if (errResult.error) 
+					{
+						throw new Exception(errResult.error.code, errResult.error.message);
+					}
+					throw new Exception('Unknown', 'Unknown error occurred');
+				}
+			})
+			.catch((err) => 
+			{
+				if (err instanceof Exception) 
+				{
+					throw err;
+				}
+				else 
+				{
+					const errResult = err as BinaryApiResponseType;
 
-               if (errResult.error) {
-                  throw new Exception(errResult.error.code, errResult.error.message, errResult.error.details);
-               }
-               throw new Exception("Unknown", "Unknown error occurred");
-            }
-         });
-   }
+					if (errResult.error) 
+					{
+						throw new Exception(errResult.error.code, errResult.error.message, errResult.error.details);
+					}
+					throw new Exception('Unknown', 'Unknown error occurred');
+				}
+			});
+	}
 
-   public async websiteStatus() {
-      const params: Types.ServerStatusRequest = {
-         website_status: 1,
-      };
+	public async websiteStatus() 
+	{
+		const params: Types.ServerStatusRequest = {
+			website_status : 1,
+		};
 
-      return await this.#call<Types.ServerStatusRequest, Types.ServerStatusResponse>("websiteStatus", params);
-   }
+		return await this.#call<Types.ServerStatusRequest, Types.ServerStatusResponse>('websiteStatus', params);
+	}
 
-   public async authorize(token?: string) {
-      this.#token = token || this.#token;
-      if (!this.#token) {
-         throw new Exception("MISSING_ARGUMENT", "You must specify token parameter");
-      }
-      const params: Types.AuthorizeRequest = {
-         authorize: this.#token,
-      };
+	public async authorize(token?: string) 
+	{
+		this.#token = token || this.#token;
+		if (!this.#token) 
+		{
+			throw new Exception('MISSING_ARGUMENT', 'You must specify token parameter');
+		}
+		const params: Types.AuthorizeRequest = {
+			authorize : this.#token,
+		};
 
-      this.#authorized = false;
+		this.#authorized = false;
 
-      return this.#call<Types.AuthorizeRequest, Types.AuthorizeResponse>("authorize", params).then((authResult) => {
-         this.#authorized = true;
+		return this.#call<Types.AuthorizeRequest, Types.AuthorizeResponse>('authorize', params).then((authResult) => 
+		{
+			this.#authorized = true;
 
-         return authResult;
-      });
-   }
+			return authResult;
+		});
+	}
 
-   public async logout() {
-      if (!this.#authorized) {
-         return Promise.resolve();
-      }
-      const params: LogOutRequest = {
-         logout: 1,
-      };
+	public async logout() 
+	{
+		if (!this.#authorized) 
+		{
+			return Promise.resolve();
+		}
+		const params: LogOutRequest = {
+			logout : 1,
+		};
 
-      return this.#call<Types.LogOutRequest, Types.LogOutResponse>("logout", params).then(() => {
-         this.#authorized = false;
-      });
-   }
+		return this.#call<Types.LogOutRequest, Types.LogOutResponse>('logout', params).then(() => 
+		{
+			this.#authorized = false;
+		});
+	}
 
-   public disconnect() {
-      // This code block can be removed when PR#101 (https://github.com/binary-com/deriv-api/pull/101) is merged.
-      if (this.#api.basic.keep_alive_interval) {
-         clearInterval(this.#api.basic.keep_alive_interval);
-         this.#api.basic.keep_alive_interval = 0;
-      }
+	public disconnect() 
+	{
+		// This code block can be removed when PR#101 (https://github.com/binary-com/deriv-api/pull/101) is merged.
+		if (this.#api.basic.keep_alive_interval) 
+		{
+			clearInterval(this.#api.basic.keep_alive_interval);
+			this.#api.basic.keep_alive_interval = 0;
+		}
 
-      this.#api.basic.disconnect();
+		this.#api.basic.disconnect();
 
-      this.#authorized = false;
-   }
+		this.#authorized = false;
+	}
 
-   public async profitTable(params: Types.ProfitTableRequest) {
-      return await this.#call<Types.ProfitTableRequest, Types.ProfitTableResponse>("profitTable", params);
-   }
+	public async profitTable(params: Types.ProfitTableRequest) 
+	{
+		return await this.#call<Types.ProfitTableRequest, Types.ProfitTableResponse>('profitTable', params);
+	}
 
-   public async portfolio(params: Types.PortfolioRequest) {
-      return await this.#call<Types.PortfolioRequest, Types.PortfolioResponse>("portfolio", params);
-   }
+	public async portfolio(params: Types.PortfolioRequest) 
+	{
+		return await this.#call<Types.PortfolioRequest, Types.PortfolioResponse>('portfolio', params);
+	}
 
-   /**
+	/**
     * Buy a Contract for multiple Accounts specified by the `tokens` parameter.
     * @param {Types.BuyContractForMultipleAccountsRequest} params
     * @return {Promise<Types.BuyContractForMultipleAccounts>}
     */
-   public async buyContractForMultipleAccounts(params: Types.BuyContractForMultipleAccountsRequest) {
-      return await this.#call<Types.BuyContractForMultipleAccountsRequest, Types.BuyContractForMultipleAccountsResponse>("buyContractForMultipleAccounts", params);
-   }
+	public async buyContractForMultipleAccounts(params: Types.BuyContractForMultipleAccountsRequest) 
+	{
+		return await this.#call<Types.BuyContractForMultipleAccountsRequest, Types.BuyContractForMultipleAccountsResponse>('buyContractForMultipleAccounts', params);
+	}
 
-   /**
+	/**
     * Gets latest price for a specific contract.
     * @param {Types.PriceProposalRequest} params
     * @return {Promise<Types.Proposal>}
     */
-   public async proposal(params: Types.PriceProposalRequest) {
-      return await this.#call<Types.PriceProposalRequest, Types.PriceProposalResponse>("proposal", params);
-   }
+	public async proposal(params: Types.PriceProposalRequest) 
+	{
+		return await this.#call<Types.PriceProposalRequest, Types.PriceProposalResponse>('proposal', params);
+	}
 }
 
 export { Exception };

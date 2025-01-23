@@ -1,32 +1,28 @@
 {
-   "name": "deriv-api-ts",
-   "version": "1.0.7",
-   "description": "A typescript wrapper around Deriv API",
+   "name": "react-native-deriv-api-ts",
+   "version": "1.0.0",
+   "description": "A fork of deriv-api-ts modified for React Native compatibility.",
    "main": "dist/DerivAPI.js",
    "repository": {
-      "url": "https://github.com/information-security/deriv-api-ts",
+      "url": "https://github.com/RussellGN/react-native-deriv-api-ts",
       "type": "git"
    },
-   "author": "Farzan Doroodgar <farzan.doroodgar@gmail.com> (https://utob.ir)",
+   "author": "Russell Gundani <dudurussell@gmail.com>",
    "license": "MIT",
    "keywords": [
       "deriv",
       "deriv-api",
-      "deriv-ts"
+      "deriv-ts",
+      "react-native"
    ],
-   "bugs": {
-      "email": "support@utob.ir",
-      "url": "https://github.com/information-security/deriv-api-ts/issues"
-   },
    "scripts": {
       "type-check": "tsc -p tsconfig.lint.json --noEmit",
       "eslinter": "eslint -c .eslintrc.js ./ --ext .js,.ts",
-      "lint": "yarn run eslinter; yarn run type-check",
+      "lint": "npm run eslinter; npm run type-check",
       "build": "tsc --build ./tsconfig.json",
       "test": "jest --passWithNoTests",
-      "prepack": "yarn build"
+      "prepack": "npm build"
    },
-   "packageManager": "yarn@3.1.1",
    "devDependencies": {
       "@types/node": "^17.0.23",
       "@typescript-eslint/eslint-plugin": "^5.11.0",
