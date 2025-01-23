@@ -4,7 +4,7 @@
    "description": "A fork of deriv-api-ts modified for React Native compatibility.",
    "main": "dist/DerivAPI.js",
    "repository": {
-      "url": "https://github.com/RussellGN/react-native-deriv-api-ts",
+      "url": "git+https://github.com/RussellGN/react-native-deriv-api-ts.git",
       "type": "git"
    },
    "author": "Russell Gundani <dudurussell@gmail.com>",
