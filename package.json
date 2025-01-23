@@ -1,6 +1,6 @@
 {
    "name": "react-native-deriv-api-ts",
-   "version": "1.0.0",
+   "version": "1.0.1",
    "description": "A fork of deriv-api-ts modified for React Native compatibility.",
    "main": "dist/DerivAPI.js",
    "repository": {
