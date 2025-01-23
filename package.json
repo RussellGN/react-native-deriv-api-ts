@@ -21,7 +21,7 @@
       "lint": "npm run eslinter; npm run type-check",
       "build": "tsc --build ./tsconfig.json",
       "test": "jest --passWithNoTests",
-      "prepack": "npm build"
+      "prepack": "npm run build"
    },
    "devDependencies": {
       "@types/node": "^17.0.23",

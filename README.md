@@ -1,17 +1,19 @@
-# deriv-api-ts
+# react-native-deriv-api-ts
 
 A typescript wrapper around [Deriv API](https://github.com/binary-com/deriv-api).
 
 # Installation
 
 ## Yarn
+
 ```shell
-yarn add deriv-api-ts
+yarn add react-native-deriv-api-ts
 ```
 
 ## NPM
+
 ```shell
-npm install deriv-api-ts
+npm install react-native-deriv-api-ts
 ```
 
 # Usage
@@ -19,7 +21,7 @@ npm install deriv-api-ts
 ## Endpoints without authentication
 
 ```typescript
-import { DerivAPIWrapper } from 'deriv-api-ts';
+import { DerivAPIWrapper } from "react-native-deriv-api-ts";
 
 const appId = 1234;
 const api = new DerivAPIWrapper(appId);
@@ -39,44 +41,43 @@ authenticate with the token that is passed either to the constructor or to the l
 token is found, an error will be thrown.
 
 ```typescript
-import { DerivAPIWrapper } from 'deriv-api-ts';
+import { DerivAPIWrapper } from "react-native-deriv-api-ts";
 
 const appId = 1234;
 const api = new DerivAPIWrapper(appId);
 
-const authResult = await api.authorize('YOUR API TOKEN');
+const authResult = await api.authorize("YOUR API TOKEN");
 ```
 
 OR
 
 ```typescript
-import { DerivAPIWrapper } from 'deriv-api-ts';
+import { DerivAPIWrapper } from "react-native-deriv-api-ts";
 
 const appId = 1234;
-const api = new DerivAPIWrapper(appId, 'YOUR API TOKEN');
+const api = new DerivAPIWrapper(appId, "YOUR API TOKEN");
 ```
 
 ## Types
+
 `@deriv/api-types` package is used internally to provide support for types.
 
 ```typescript
-import { DerivAPIWrapper, Exception, Types as binaryTypes } from 'deriv-api-ts';
+import { DerivAPIWrapper, Exception, Types as binaryTypes } from "react-native-deriv-api-ts";
 
 const appId = 1234;
-const api = new DerivAPIWrapper(appId, 'YOUR API TOKEN');
+const api = new DerivAPIWrapper(appId, "YOUR API TOKEN");
 const params: binaryTypes.ProfitTableRequest = {
-    contract_type : [ 'CALL' ],
-    profit_table  : 1,
+   contract_type: ["CALL"],
+   profit_table: 1,
 };
 
 api.profitTable(params)
-   .then((profitTableResult: binaryTypes.ProfitTable) =>
-   {
-       // Your code
+   .then((profitTableResult: binaryTypes.ProfitTable) => {
+      // Your code
    })
-   .catch((err: Exception) =>
-   {
-	   console.log(`Code: ${ errObj.code } Message: ${ errObj.message } Details: ${ JSON.stringify(errObj.getParams()) }`);
+   .catch((err: Exception) => {
+      console.log(`Code: ${errObj.code} Message: ${errObj.message} Details: ${JSON.stringify(errObj.getParams())}`);
    })
    // Closing the websocket connection gracefully.
    .finally(() => api.disconnect());
@@ -85,52 +86,45 @@ api.profitTable(params)
 ## Error Handling
 
 ```typescript
-import { DerivAPIWrapper, Exception, Types } from 'deriv-api-ts';
+import { DerivAPIWrapper, Exception, Types } from "react-native-deriv-api-ts";
 
 const appId = 1234;
-const api = new DerivAPIWrapper(1234, 'YOUR API TOKEN');
+const api = new DerivAPIWrapper(1234, "YOUR API TOKEN");
 const params: Types.ProfitTableRequest = {
-    contract_type : [],
-    profit_table  : 1,
+   contract_type: [],
+   profit_table: 1,
 };
 
 api.profitTable(params)
-   .then((profitTableResult) =>
-   {
-       // Your code
+   .then((profitTableResult) => {
+      // Your code
    })
-   .catch((err: Exception) =>
-   {
-	   console.log(`Code: ${ errObj.code } Message: ${ errObj.message } Details: ${ JSON.stringify(errObj.getParams()) }`);
+   .catch((err: Exception) => {
+      console.log(`Code: ${errObj.code} Message: ${errObj.message} Details: ${JSON.stringify(errObj.getParams())}`);
    })
-    // Closing the websocket connection gracefully.
+   // Closing the websocket connection gracefully.
    .finally(() => api.disconnect());
 ```
 
 OR
 
 ```typescript
-import { DerivAPIWrapper, Exception, Types } from 'deriv-api-ts';
+import { DerivAPIWrapper, Exception, Types } from "react-native-deriv-api-ts";
 
 const appId = 1234;
-const api = new DerivAPIWrapper(1234, 'YOUR API TOKEN');
+const api = new DerivAPIWrapper(1234, "YOUR API TOKEN");
 const params: Types.ProfitTableRequest = {
-    contract_type : [],
-    profit_table  : 1,
+   contract_type: [],
+   profit_table: 1,
 };
 
-try
-{
-    const profitTableResult = await api.profitTable(params);
-}
-catch (err)
-{
-    const errObj = err as Exception;
-    console.log(`Code: ${ errObj.code } Message: ${ errObj.message } Details: ${ JSON.stringify(errObj.getParams()) }`);
-}
-finally
-{
-    // Closing the websocket connection gracefully.
-    api.disconnect();
+try {
+   const profitTableResult = await api.profitTable(params);
+} catch (err) {
+   const errObj = err as Exception;
+   console.log(`Code: ${errObj.code} Message: ${errObj.message} Details: ${JSON.stringify(errObj.getParams())}`);
+} finally {
+   // Closing the websocket connection gracefully.
+   api.disconnect();
 }
 ```
