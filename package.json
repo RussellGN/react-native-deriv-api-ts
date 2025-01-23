@@ -29,9 +29,7 @@
   },
   "packageManager": "yarn@3.1.1",
   "devDependencies": {
-    "@types/debug": "^4.1.7",
     "@types/node": "^17.0.23",
-    "@types/ws": "^8.5.3",
     "@typescript-eslint/eslint-plugin": "^5.11.0",
     "@typescript-eslint/parser": "^5.11.0",
     "eslint": "8.2.0",
@@ -43,9 +41,9 @@
   "dependencies": {
     "@deriv/api-types": "^1.0.50",
     "@deriv/deriv-api": "^1.0.9",
-    "debug": "^4.3.3",
-    "rxjs": "^7.5.4",
-    "ws": "^8.5.0"
+    "react-native-debug": "^3.0.0",
+    "react-native-websocket": "^1.0.2",
+    "rxjs": "^7.5.4"
   },
   "files": [
     "dist/**/*"

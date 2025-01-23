@@ -37,19 +37,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["@deriv/api-types", "npm:1.0.50"],
             ["@deriv/deriv-api", "npm:1.0.9"],
-            ["@types/debug", "npm:4.1.7"],
             ["@types/node", "npm:17.0.23"],
-            ["@types/ws", "npm:8.5.3"],
             ["@typescript-eslint/eslint-plugin", "virtual:7b3e4f4207b7060905fe4a57928e154afc3abdf53a32667b2ebed298cab82d7a53beb7a743a83ce11ef4ea4ac0bd2ac9c382eeab206e31e572df9453a70fc262#npm:5.11.0"],
             ["@typescript-eslint/parser", "virtual:7b3e4f4207b7060905fe4a57928e154afc3abdf53a32667b2ebed298cab82d7a53beb7a743a83ce11ef4ea4ac0bd2ac9c382eeab206e31e572df9453a70fc262#npm:5.11.0"],
-            ["debug", "virtual:bd5ac53f2a4d13161e4becd2185852df3b4231ea7460becce6b80faf113589c84e6d5a7592f2b45846dcda321b203d871f080c12cd9638e02938ccdf6bfbd6ee#npm:4.3.3"],
             ["eslint", "npm:8.2.0"],
             ["jest", "virtual:7b3e4f4207b7060905fe4a57928e154afc3abdf53a32667b2ebed298cab82d7a53beb7a743a83ce11ef4ea4ac0bd2ac9c382eeab206e31e572df9453a70fc262#npm:27.5.1"],
+            ["react-native-debug", "npm:3.0.0"],
+            ["react-native-websocket", "npm:1.0.2"],
             ["rxjs", "npm:7.5.4"],
             ["ts-jest", "virtual:7b3e4f4207b7060905fe4a57928e154afc3abdf53a32667b2ebed298cab82d7a53beb7a743a83ce11ef4ea4ac0bd2ac9c382eeab206e31e572df9453a70fc262#npm:27.1.3"],
             ["ts-node", "virtual:7b3e4f4207b7060905fe4a57928e154afc3abdf53a32667b2ebed298cab82d7a53beb7a743a83ce11ef4ea4ac0bd2ac9c382eeab206e31e572df9453a70fc262#npm:10.5.0"],
-            ["typescript", "patch:typescript@npm%3A4.5.5#~builtin<compat/typescript>::version=4.5.5&hash=493e53"],
-            ["ws", "virtual:7b3e4f4207b7060905fe4a57928e154afc3abdf53a32667b2ebed298cab82d7a53beb7a743a83ce11ef4ea4ac0bd2ac9c382eeab206e31e572df9453a70fc262#npm:8.5.0"]
+            ["typescript", "patch:typescript@npm%3A4.5.5#~builtin<compat/typescript>::version=4.5.5&hash=493e53"]
           ],
           "linkType": "SOFT",
         }]
@@ -1344,16 +1342,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
-      ["@types/debug", [
-        ["npm:4.1.7", {
-          "packageLocation": "./.yarn/cache/@types-debug-npm-4.1.7-f54c81f8db-0a7b89d8ed.zip/node_modules/@types/debug/",
-          "packageDependencies": [
-            ["@types/debug", "npm:4.1.7"],
-            ["@types/ms", "npm:0.7.31"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
       ["@types/graceful-fs", [
         ["npm:4.1.5", {
           "packageLocation": "./.yarn/cache/@types-graceful-fs-npm-4.1.5-91d62e1050-d076bb61f4.zip/node_modules/@types/graceful-fs/",
@@ -1402,15 +1390,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
-      ["@types/ms", [
-        ["npm:0.7.31", {
-          "packageLocation": "./.yarn/cache/@types-ms-npm-0.7.31-ea3b89342b-daadd354ae.zip/node_modules/@types/ms/",
-          "packageDependencies": [
-            ["@types/ms", "npm:0.7.31"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
       ["@types/node", [
         ["npm:17.0.17", {
           "packageLocation": "./.yarn/cache/@types-node-npm-17.0.17-8bac2a57aa-8ddba2829a.zip/node_modules/@types/node/",
@@ -1441,16 +1420,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@types-stack-utils-npm-2.0.1-867718ab70-205fdbe332.zip/node_modules/@types/stack-utils/",
           "packageDependencies": [
             ["@types/stack-utils", "npm:2.0.1"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
-      ["@types/ws", [
-        ["npm:8.5.3", {
-          "packageLocation": "./.yarn/cache/@types-ws-npm-8.5.3-ae52c483f1-0ce46f850d.zip/node_modules/@types/ws/",
-          "packageDependencies": [
-            ["@types/ws", "npm:8.5.3"],
-            ["@types/node", "npm:17.0.17"]
           ],
           "linkType": "HARD",
         }]
@@ -2556,19 +2525,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["deriv-api-ts", "workspace:."],
             ["@deriv/api-types", "npm:1.0.50"],
             ["@deriv/deriv-api", "npm:1.0.9"],
-            ["@types/debug", "npm:4.1.7"],
             ["@types/node", "npm:17.0.23"],
-            ["@types/ws", "npm:8.5.3"],
             ["@typescript-eslint/eslint-plugin", "virtual:7b3e4f4207b7060905fe4a57928e154afc3abdf53a32667b2ebed298cab82d7a53beb7a743a83ce11ef4ea4ac0bd2ac9c382eeab206e31e572df9453a70fc262#npm:5.11.0"],
             ["@typescript-eslint/parser", "virtual:7b3e4f4207b7060905fe4a57928e154afc3abdf53a32667b2ebed298cab82d7a53beb7a743a83ce11ef4ea4ac0bd2ac9c382eeab206e31e572df9453a70fc262#npm:5.11.0"],
-            ["debug", "virtual:bd5ac53f2a4d13161e4becd2185852df3b4231ea7460becce6b80faf113589c84e6d5a7592f2b45846dcda321b203d871f080c12cd9638e02938ccdf6bfbd6ee#npm:4.3.3"],
             ["eslint", "npm:8.2.0"],
             ["jest", "virtual:7b3e4f4207b7060905fe4a57928e154afc3abdf53a32667b2ebed298cab82d7a53beb7a743a83ce11ef4ea4ac0bd2ac9c382eeab206e31e572df9453a70fc262#npm:27.5.1"],
+            ["react-native-debug", "npm:3.0.0"],
+            ["react-native-websocket", "npm:1.0.2"],
             ["rxjs", "npm:7.5.4"],
             ["ts-jest", "virtual:7b3e4f4207b7060905fe4a57928e154afc3abdf53a32667b2ebed298cab82d7a53beb7a743a83ce11ef4ea4ac0bd2ac9c382eeab206e31e572df9453a70fc262#npm:27.1.3"],
             ["ts-node", "virtual:7b3e4f4207b7060905fe4a57928e154afc3abdf53a32667b2ebed298cab82d7a53beb7a743a83ce11ef4ea4ac0bd2ac9c382eeab206e31e572df9453a70fc262#npm:10.5.0"],
-            ["typescript", "patch:typescript@npm%3A4.5.5#~builtin<compat/typescript>::version=4.5.5&hash=493e53"],
-            ["ws", "virtual:7b3e4f4207b7060905fe4a57928e154afc3abdf53a32667b2ebed298cab82d7a53beb7a743a83ce11ef4ea4ac0bd2ac9c382eeab206e31e572df9453a70fc262#npm:8.5.0"]
+            ["typescript", "patch:typescript@npm%3A4.5.5#~builtin<compat/typescript>::version=4.5.5&hash=493e53"]
           ],
           "linkType": "SOFT",
         }]
@@ -4419,6 +4386,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["loose-envify", [
+        ["npm:1.4.0", {
+          "packageLocation": "./.yarn/cache/loose-envify-npm-1.4.0-6307b72ccf-6517e24e0c.zip/node_modules/loose-envify/",
+          "packageDependencies": [
+            ["loose-envify", "npm:1.4.0"],
+            ["js-tokens", "npm:4.0.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["lru-cache", [
         ["npm:6.0.0", {
           "packageLocation": "./.yarn/cache/lru-cache-npm-6.0.0-b4c8668fe1-f97f499f89.zip/node_modules/lru-cache/",
@@ -4643,6 +4620,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["ms", [
+        ["npm:0.7.1", {
+          "packageLocation": "./.yarn/cache/ms-npm-0.7.1-728c181070-73b453879f.zip/node_modules/ms/",
+          "packageDependencies": [
+            ["ms", "npm:0.7.1"]
+          ],
+          "linkType": "HARD",
+        }],
         ["npm:2.1.2", {
           "packageLocation": "./.yarn/cache/ms-npm-2.1.2-ec0c1512ff-673cdb2c31.zip/node_modules/ms/",
           "packageDependencies": [
@@ -4760,6 +4744,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/nwsapi-npm-2.2.0-8f05590043-5ef4a9bc0c.zip/node_modules/nwsapi/",
           "packageDependencies": [
             ["nwsapi", "npm:2.2.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["object-assign", [
+        ["npm:4.1.1", {
+          "packageLocation": "./.yarn/cache/object-assign-npm-4.1.1-1004ad6dec-fcc6e4ea8c.zip/node_modules/object-assign/",
+          "packageDependencies": [
+            ["object-assign", "npm:4.1.1"]
           ],
           "linkType": "HARD",
         }]
@@ -5046,6 +5039,18 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["prop-types", [
+        ["npm:15.8.1", {
+          "packageLocation": "./.yarn/cache/prop-types-npm-15.8.1-17c71ee7ee-c056d3f1c0.zip/node_modules/prop-types/",
+          "packageDependencies": [
+            ["prop-types", "npm:15.8.1"],
+            ["loose-envify", "npm:1.4.0"],
+            ["object-assign", "npm:4.1.1"],
+            ["react-is", "npm:16.13.1"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["psl", [
         ["npm:1.8.0", {
           "packageLocation": "./.yarn/cache/psl-npm-1.8.0-226099d70e-6150048ed2.zip/node_modules/psl/",
@@ -5074,10 +5079,37 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["react-is", [
+        ["npm:16.13.1", {
+          "packageLocation": "./.yarn/cache/react-is-npm-16.13.1-a9b9382b4f-f7a19ac349.zip/node_modules/react-is/",
+          "packageDependencies": [
+            ["react-is", "npm:16.13.1"]
+          ],
+          "linkType": "HARD",
+        }],
         ["npm:17.0.2", {
           "packageLocation": "./.yarn/cache/react-is-npm-17.0.2-091bbb8db6-9d6d111d89.zip/node_modules/react-is/",
           "packageDependencies": [
             ["react-is", "npm:17.0.2"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["react-native-debug", [
+        ["npm:3.0.0", {
+          "packageLocation": "./.yarn/cache/react-native-debug-npm-3.0.0-03da642ed3-8db33f2572.zip/node_modules/react-native-debug/",
+          "packageDependencies": [
+            ["react-native-debug", "npm:3.0.0"],
+            ["ms", "npm:0.7.1"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["react-native-websocket", [
+        ["npm:1.0.2", {
+          "packageLocation": "./.yarn/cache/react-native-websocket-npm-1.0.2-7d8053c684-0e1eb72ef1.zip/node_modules/react-native-websocket/",
+          "packageDependencies": [
+            ["react-native-websocket", "npm:1.0.2"],
+            ["prop-types", "npm:15.8.1"]
           ],
           "linkType": "HARD",
         }]
@@ -6079,30 +6111,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["ws", "npm:7.5.7"]
           ],
           "linkType": "SOFT",
-        }],
-        ["npm:8.5.0", {
-          "packageLocation": "./.yarn/cache/ws-npm-8.5.0-8e99728c84-76f2f90e40.zip/node_modules/ws/",
-          "packageDependencies": [
-            ["ws", "npm:8.5.0"]
-          ],
-          "linkType": "SOFT",
-        }],
-        ["virtual:7b3e4f4207b7060905fe4a57928e154afc3abdf53a32667b2ebed298cab82d7a53beb7a743a83ce11ef4ea4ac0bd2ac9c382eeab206e31e572df9453a70fc262#npm:8.5.0", {
-          "packageLocation": "./.yarn/__virtual__/ws-virtual-643586d31b/0/cache/ws-npm-8.5.0-8e99728c84-76f2f90e40.zip/node_modules/ws/",
-          "packageDependencies": [
-            ["ws", "virtual:7b3e4f4207b7060905fe4a57928e154afc3abdf53a32667b2ebed298cab82d7a53beb7a743a83ce11ef4ea4ac0bd2ac9c382eeab206e31e572df9453a70fc262#npm:8.5.0"],
-            ["@types/bufferutil", null],
-            ["@types/utf-8-validate", null],
-            ["bufferutil", null],
-            ["utf-8-validate", null]
-          ],
-          "packagePeers": [
-            "@types/bufferutil",
-            "@types/utf-8-validate",
-            "bufferutil",
-            "utf-8-validate"
-          ],
-          "linkType": "HARD",
         }],
         ["virtual:f91bf4c0c4aadcdfd1654c7f1672aa158081b3d1f8f0a85d6474e5410f732c9c06f9cbc6f1645ed67983b8491d534f1568af9ff8d50552cb6ff14ce1242252b5#npm:7.5.7", {
           "packageLocation": "./.yarn/__virtual__/ws-virtual-a79e1f74af/0/cache/ws-npm-7.5.7-6cc440864a-5c1f669a16.zip/node_modules/ws/",
